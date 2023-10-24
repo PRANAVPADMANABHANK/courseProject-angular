@@ -10,6 +10,7 @@ export class HeaderComponent {
 
 
   onSelect(feature: string) {
+    console.log(feature,"feature got ")
     this.featureSelected.emit(feature);
   }
 }
