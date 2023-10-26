@@ -14,4 +14,11 @@ export class ShoppingListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onIngredientAdded(ingredient : Ingredient){
+    console.log(ingredient.name, "event got from child")
+    if(ingredient.name.length){
+      this.ingredients.push(ingredient)  
+    }
+  }
 }
