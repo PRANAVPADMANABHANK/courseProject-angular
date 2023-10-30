@@ -16,7 +16,7 @@ const routes: Routes = [
   ]},
   {path: 'shopping-list', component: ShoppingListComponent},
 ];
-
+  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
