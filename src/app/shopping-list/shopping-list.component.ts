@@ -20,5 +20,5 @@ export class ShoppingListComponent implements OnInit {
     if(ingredient.name.length){
       this.ingredients.push(ingredient)  
     }
-  }
+  } 
 }
