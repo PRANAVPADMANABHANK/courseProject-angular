@@ -25,7 +25,11 @@ export class RecipeService {
   constructor(private slService: ShoppingListService){}
 
   getRecipes() {
-    return this.recipes.slice(); //slice method used to return the copy of the recipes only and not the original one.
+    return this.recipes.slice(); //slice method used to return the copy of the recipes array only and not the original one.
+  }
+
+  getRecipe(index: number){
+    return this.recipes[index]
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]){
