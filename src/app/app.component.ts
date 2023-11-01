@@ -43,16 +43,16 @@ export class AppComponent implements OnInit {
   
 
   ngOnInit() {
-    this.myObservable.subscribe(
-      (value) => {
-        console.log(value);
-      },
-      (error) => {
-        alert(error.message);
-      },
-      () => {
-        alert('Observable has completed emitting all values.');
-      }
-    );
+    // this.myObservable.subscribe(
+    //   (value) => {
+    //     console.log(value);
+    //   },
+    //   (error) => {
+    //     alert(error.message);
+    //   },
+    //   () => {
+    //     alert('Observable has completed emitting all values.');
+    //   }
+    // );
   }   
 }
