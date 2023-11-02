@@ -27,6 +27,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         this.editedItemIndex = index;
         this.editMode = true;
         this.editedItem = this.slService.getIngredient(index);
+
+        console.log(this.editedItem, "editedItem")
         this.slForm.setValue({
           name: this.editedItem.name,
           amount: this.editedItem.amount
@@ -35,13 +37,30 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     );
   }
 
-  onAddItem(form: NgForm) {
+  onSubmit(form: NgForm) {
     const value = form.value;
     console.log(value, "value")
     const newIngredient = new Ingredient(value.name, value.amount);
-    this.slService.addIngredient(newIngredient);
+    if(this.editMode){
+      this.slService.updateIngredient(this.editedItemIndex, newIngredient);
+    }else{
+      this.slService.addIngredient(newIngredient);
+    }
+    this.editMode = false;
+    form.reset()
   }
 
+  onClear(){
+    this.slForm.reset();
+    this.editMode = false;
+  }
+
+  onDelete(){
+    this.slService.deleteIngredient(this.editedItemIndex);
+    this.onClear();
+  }
+
+  //this unsubscribe is for to avoid the memory leak.........
   ngOnDestroy(): void {
       this.subscription.unsubscribe();
   }
