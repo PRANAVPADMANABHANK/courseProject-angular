@@ -11,6 +11,12 @@ export class AppComponent implements OnInit {
   array1 = [1, 2, 3, 4, 5];
   array2 = ['A', 'B', 'C'];
 
+  user = {
+    firstName : "Jane Doe",
+    city: "New York",
+    cityCode: "NY"
+  }
+
   myObservable = from(this.array1).pipe(  //this pipe contains the sequence of operators like map and filter.
   map((value) => {
     return value * 5;
