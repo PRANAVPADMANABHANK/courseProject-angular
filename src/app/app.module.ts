@@ -28,7 +28,7 @@ import { RecipeService } from './recipes/recipe.service';
     ShoppingEditComponent,
     HeaderComponent,
     DropdownDirective,
-    RecipeStartComponent,
+    RecipeStartComponent,    
     RecipeEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
@@ -36,3 +36,4 @@ import { RecipeService } from './recipes/recipe.service';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+   
