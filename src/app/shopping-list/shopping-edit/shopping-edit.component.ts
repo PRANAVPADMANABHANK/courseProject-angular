@@ -15,6 +15,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   editMode = false;
   editedItemIndex !: number;
   editedItem !: Ingredient;
+  childDataRecieved !: boolean 
+  showConfirmDeleteComponent: boolean = false;
+
 
   constructor(private slService: ShoppingListService) {}
 
@@ -35,6 +38,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         })
       }
     );
+
   }
 
   onSubmit(form: NgForm) {
@@ -55,10 +59,25 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.editMode = false;
   }
 
-  onDelete(){
+  onDelete() {
+    
+    this.showConfirmDeleteComponent = true;
+  
+    setTimeout(() => {
+      this.showConfirmDeleteComponent = false; 
+    }, 2000); 
+  
+    // Perform other actions (e.g., delete operation)
     this.slService.deleteIngredient(this.editedItemIndex);
     this.onClear();
   }
+  
+
+  // RecieveData(event: boolean){
+  //   console.log(event, "event got")
+  //   this.childDataRecieved = event
+
+  // }
 
   //this unsubscribe is for to avoid the memory leak.........
   ngOnDestroy(): void {

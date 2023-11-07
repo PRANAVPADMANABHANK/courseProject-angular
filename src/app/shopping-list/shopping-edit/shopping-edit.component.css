@@ -1,0 +1,29 @@
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Fade-out Animation */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  /* Apply the animations */
+  .fade-in {
+    animation: fadeIn 1s; /* You can adjust the duration as needed (1s for a 1-second fade in) */
+  }
+  
+  .fade-out {
+    animation: fadeOut 1s; /* You can adjust the duration as needed (1s for a 1-second fade out) */
+  }
+  

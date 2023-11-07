@@ -17,6 +17,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipes/recipe.service';
 import { HighlightPipe } from './highlight.pipe';
+import { ConfirmDeleteComponent } from './shopping-list/shopping-edit/confirm-delete/confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { HighlightPipe } from './highlight.pipe';
     HeaderComponent,
     DropdownDirective,
     RecipeStartComponent,    
-    RecipeEditComponent, HighlightPipe,
+    RecipeEditComponent, HighlightPipe, ConfirmDeleteComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [ShoppingListService, RecipeService],
