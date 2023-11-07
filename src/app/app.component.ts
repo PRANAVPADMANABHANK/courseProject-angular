@@ -55,6 +55,6 @@ export class AppComponent implements OnInit {
     //   () => {
     //     alert('Observable has completed emitting all values.');
     //   }
-    // );
+    // );   
   }   
 }
