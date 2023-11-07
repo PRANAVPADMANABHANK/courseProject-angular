@@ -16,8 +16,12 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipes/recipe.service';
-import { HighlightPipe } from './highlight.pipe';
+import { HighlightPipe } from './pipe/highlight.pipe';
 import { ConfirmDeleteComponent } from './shopping-list/shopping-edit/confirm-delete/confirm-delete.component';
+import { ExamplesComponent } from './examples/examples.component';
+import { HiComponent } from './examples/hi/hi.component';
+import { HelloComponent } from './examples/hello/hello.component';
+import { GoodbyeComponent } from './examples/goodbye/goodbye.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,7 @@ import { ConfirmDeleteComponent } from './shopping-list/shopping-edit/confirm-de
     HeaderComponent,
     DropdownDirective,
     RecipeStartComponent,    
-    RecipeEditComponent, HighlightPipe, ConfirmDeleteComponent,
+    RecipeEditComponent, HighlightPipe, ConfirmDeleteComponent, ExamplesComponent, HiComponent, HelloComponent, GoodbyeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [ShoppingListService, RecipeService],

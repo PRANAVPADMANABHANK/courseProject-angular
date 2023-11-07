@@ -1,6 +1,8 @@
-<app-confirm-delete class="fade-in"  *ngIf="showConfirmDeleteComponent"></app-confirm-delete>
 <div class="row">
   <div class="col-xs-12">
+    <div class="alert alert-success" *ngIf="(notificationService.getSuccessMessage() | async)">
+      {{ notificationService.getSuccessMessage() | async }}
+    </div>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row">
         <div class="col-sm-5 form-group">

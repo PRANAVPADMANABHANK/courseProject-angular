@@ -3,6 +3,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -19,7 +20,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   showConfirmDeleteComponent: boolean = false;
 
 
-  constructor(private slService: ShoppingListService) {}
+  constructor(private slService: ShoppingListService, public notificationService: NotificationService) {}
 
   ngOnInit() {
     this.subscription = this.slService.startedEditing.subscribe(
@@ -60,17 +61,14 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    
-    this.showConfirmDeleteComponent = true;
-  
-    setTimeout(() => {
-      this.showConfirmDeleteComponent = false; 
-    }, 2000); 
-  
-    // Perform other actions (e.g., delete operation)
+    // Perform the delete operation here
     this.slService.deleteIngredient(this.editedItemIndex);
     this.onClear();
+  
+    // Show the success notification
+    this.notificationService.showSuccess('Item deleted successfully');
   }
+  
   
 
   // RecieveData(event: boolean){

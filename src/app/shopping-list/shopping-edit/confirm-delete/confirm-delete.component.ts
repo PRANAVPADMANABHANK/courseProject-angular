@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-confirm-delete',
@@ -6,13 +6,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./confirm-delete.component.css']
 })
 export class ConfirmDeleteComponent {
-
-  // showConfirmDeleteComponent: boolean = false;
-
-  // @Output() confirmDelete : EventEmitter<boolean> = new EventEmitter();
-
-  // sentData(){
-  //   this.confirmDelete.emit(this.showConfirmDeleteComponent)
-  // }
 
 }
