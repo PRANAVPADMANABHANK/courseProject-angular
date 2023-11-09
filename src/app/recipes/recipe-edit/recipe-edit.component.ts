@@ -12,7 +12,7 @@ import { Recipe } from '../recipe.model';
 export class RecipeEditComponent implements OnInit {
   id!: number;
   editMode = false;
-  recipeForm!: FormGroup;
+  recipeForm!: FormGroup; //type of recipeForm should be FormGroup
 
   constructor(
     private route: ActivatedRoute,
@@ -100,7 +100,7 @@ export class RecipeEditComponent implements OnInit {
     this.recipeForm = new FormGroup({
       name: new FormControl(recipeName, Validators.required),
       imagePath: new FormControl(recipeImagePath, Validators.required),
-      description: new FormControl(recipeDescription, Validators.required),
+      description: new FormControl(recipeDescription, Validators.required),   
       ingredients: new FormArray(recipeIngredients),
     });
   }

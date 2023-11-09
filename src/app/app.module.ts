@@ -17,12 +17,9 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipes/recipe.service';
 import { HighlightPipe } from './pipe/highlight.pipe';
-import { ConfirmDeleteComponent } from './shopping-list/shopping-edit/confirm-delete/confirm-delete.component';
 import { ExamplesComponent } from './examples/examples.component';
-import { HiComponent } from './examples/hi/hi.component';
-import { HelloComponent } from './examples/hello/hello.component';
-import { GoodbyeComponent } from './examples/goodbye/goodbye.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import { AccesoriesComponent } from './accesories/accesories/accesories.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +28,13 @@ import { GoodbyeComponent } from './examples/goodbye/goodbye.component';
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
-    ShoppingEditComponent,
+    ShoppingEditComponent,    
     HeaderComponent,
     DropdownDirective,
     RecipeStartComponent,    
-    RecipeEditComponent, HighlightPipe, ConfirmDeleteComponent, ExamplesComponent, HiComponent, HelloComponent, GoodbyeComponent,
+    RecipeEditComponent, HighlightPipe, ExamplesComponent, AccesoriesComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, FormsModule],
   providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,73 @@
+<div class="main-area">
+  <div class="content-area">
+    <div class="header">
+      <h1>Manage Products</h1>
+      <hr />
+    </div>
+    <div class="container">
+      <!--Add product form-->
+      <div class="form-area">
+        <h3>Create Product</h3>
+        <form
+          #productsForm="ngForm"
+          (ngSubmit)="onProductCreate(productsForm.value)"
+        >
+          <label>Procuct Name</label>
+          <input type="text" name="pName" ngModel />
+
+          <label>Procuct Description</label>
+          <input type="text" name="desc" ngModel />
+
+          <label>Procuct Price</label>
+          <input type="text" name="price" ngModel />
+
+          <input type="submit" value="{{editMode? 'UpdateProduct':'AddProduct'}}" />
+        </form>
+      </div>
+
+      <!--Display product area-->
+      <div class="product-display-area">
+        <h3>All Products</h3>
+        <table
+          id="products"
+          *ngIf="allProducts && allProducts.length > 0; else noProducts"
+        >
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let prod of allProducts; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ prod.pName }}</td>
+            <td>{{ prod.desc }}</td>
+            <td>${{ prod.price }}</td>
+            <td>
+              <button class="btn-delete" (click)="onDeleteProduct(prod.id)">
+                Delete
+              </button>
+            </td>
+            <td><button class="btn-edit" (click)="onEditProduct(prod.id)">edit</button></td>
+          </tr>
+        </table>
+
+        <ng-template #noProducts>
+          <p>No products available.</p>
+        </ng-template>
+
+        <hr />
+        <div class="action-btn-container">
+          <button class="btn-fetch" (click)="onProductsFetch()">
+            Fetch Product
+          </button>
+          <button class="btn-clear" (click)="onDeleteAllProduct()">
+            Clear Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
