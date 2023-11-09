@@ -1,12 +1,15 @@
-import { HttpClient , HttpHeaders } from "@angular/common/http";
+import { HttpClient , HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Product } from "../shared/products";
-import {map} from "rxjs/operators";
+import {map, catchError} from "rxjs/operators";
+import { Subject, throwError } from "rxjs";
 
 
 @Injectable({providedIn: "root"})
 
 export class ProductService{
+
+    error = new Subject<string>();
 
     constructor(private http: HttpClient){}
 
@@ -14,11 +17,15 @@ export class ProductService{
       const headers = new HttpHeaders({"myHeader":"angularDemo"})
       this.http.post<{name: string}>('https://formdemo-830bd-default-rtdb.firebaseio.com/products.json', products, {headers:headers}).subscribe((res)=>{
       console.log(res, "post response")
+    }, (err)=>{
+      this.error.next(err.message)
     })
     }
 
     fetchProduct(){
-       return this.http.get<{[key: string]: Product}>('https://formdemo-830bd-default-rtdb.firebaseio.com/products.json').pipe(map((res)=>{
+      const header = new HttpHeaders().set('content-type','application/json').set('Access-control-Allow-Origin','*')
+      const params = new HttpParams().set('print','pretty').set('pageNumber',1)  
+      return this.http.get<{[key: string]: Product}>('https://formdemo-830bd-default-rtdb.firebaseio.com/products.json', {headers: header, params: params}).pipe(map((res)=>{
       const products = []
       for(const key in res){
         if(res.hasOwnProperty(key)){
@@ -26,11 +33,17 @@ export class ProductService{
         }
       }
       return products;
+    }), catchError((err)=>{
+
+      return throwError(err)
     }))
     }
 
     deleteProduct(id:string){
-        this.http.delete('https://formdemo-830bd-default-rtdb.firebaseio.com/products/'+id+'.json').subscribe()
+      let header = new HttpHeaders()
+      header = header.append('myHeader1','value1');
+      header = header.append('myHeader2','value2');
+        this.http.delete('https://formdemo-830bd-default-rtdb.firebaseio.com/products/'+id+'.json', {headers: header}).subscribe()
 
     }
 

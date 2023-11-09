@@ -1,19 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/shared/products';
+import { Subscription } from 'rxjs-compat/Subscription';
 
 @Component({
   selector: 'app-accesories',
   templateUrl: './accesories.component.html',
   styleUrls: ['./accesories.component.css']
 })
-export class AccesoriesComponent implements OnInit {
+export class AccesoriesComponent implements OnInit, OnDestroy {
 
   title = 'AngularHttpRequest';
   allProducts : Product[] = [];
   editMode : boolean = false
   currentProductId: string
+  errorMessage : string = null;
+  errorSub: Subscription 
   @ViewChild('productsForm') form: NgForm
 
 
@@ -21,6 +24,9 @@ export class AccesoriesComponent implements OnInit {
 
   ngOnInit(){
     this.fetchProducts()
+    this.errorSub =  this.productService.error.subscribe((message)=>{
+      this.errorMessage = message;
+    })
   }
 
   onProductsFetch(){
@@ -64,6 +70,13 @@ export class AccesoriesComponent implements OnInit {
     this.productService.fetchProduct().subscribe((products)=>{
       console.log(products, "get response")
       this.allProducts = products
+    },(err)=>{
+      this.errorMessage = err.message
+      console.log(this.errorMessage, "errormessage")
     })
+  }
+
+  ngOnDestroy(): void {
+      this.errorSub.unsubscribe()
   }
 }
