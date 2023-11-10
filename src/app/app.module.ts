@@ -20,6 +20,7 @@ import { HighlightPipe } from './pipe/highlight.pipe';
 import { ExamplesComponent } from './examples/examples.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AccesoriesComponent } from './accesories/accesories/accesories.component'
+import { AuthComponent } from './auth/auth.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,7 @@ import { AccesoriesComponent } from './accesories/accesories/accesories.componen
     HeaderComponent,
     DropdownDirective,
     RecipeStartComponent,    
-    RecipeEditComponent, HighlightPipe, ExamplesComponent, AccesoriesComponent
+    RecipeEditComponent, HighlightPipe, ExamplesComponent, AccesoriesComponent, AuthComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, FormsModule],
   providers: [ShoppingListService, RecipeService],

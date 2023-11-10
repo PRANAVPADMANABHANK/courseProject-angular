@@ -7,6 +7,7 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { ExamplesComponent } from './examples/examples.component';
 import { AccesoriesComponent } from './accesories/accesories/accesories.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
@@ -18,7 +19,9 @@ const routes: Routes = [
   ]},
   {path: 'shopping-list', component: ShoppingListComponent},
   {path: 'accesories', component: AccesoriesComponent},
-  {path: 'examples', component: ExamplesComponent}
+  {path: 'examples', component: ExamplesComponent},
+  {path: 'auth', component: AuthComponent},
+  { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) }
 ];
   
 @NgModule({

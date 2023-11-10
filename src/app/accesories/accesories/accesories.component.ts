@@ -39,11 +39,11 @@ export class AccesoriesComponent implements OnInit, OnDestroy {
     }else{
       this.productService.updateProduct(this.currentProductId, products)
     }
-    
+    this.form.reset()
   }
 
   onDeleteProduct(id:string){
-    this.productService.deleteProduct(id)
+    this.productService.deleteProduct(id)   
   }
 
   onDeleteAllProduct(){
