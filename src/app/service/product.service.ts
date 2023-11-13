@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { Product } from "../shared/products";
 import {map, catchError} from "rxjs/operators";
 import { Subject, throwError } from "rxjs";
+import { Observable } from 'rxjs';
+
 
 
 @Injectable({providedIn: "root"})
@@ -13,13 +15,9 @@ export class ProductService{
 
     constructor(private http: HttpClient){}
 
-    createProduct(products: {pName: string, desc: string, price: string}){
-      const headers = new HttpHeaders({"myHeader":"angularDemo"})
-      this.http.post<{name: string}>('https://formdemo-830bd-default-rtdb.firebaseio.com/products.json', products, {headers:headers}).subscribe((res)=>{
-      console.log(res, "post response")
-    }, (err)=>{
-      this.error.next(err.message)
-    })
+    createProduct(products: { pName: string, desc: string, price: string }): Observable<any> {
+      const headers = new HttpHeaders({ "myHeader": "angularDemo" });
+      return this.http.post<{ name: string }>('https://formdemo-830bd-default-rtdb.firebaseio.com/products.json', products, { headers });
     }
 
     fetchProduct(){
@@ -43,16 +41,17 @@ export class ProductService{
       let header = new HttpHeaders()
       header = header.append('myHeader1','value1');
       header = header.append('myHeader2','value2');
-        this.http.delete('https://formdemo-830bd-default-rtdb.firebaseio.com/products/'+id+'.json', {headers: header}).subscribe()
+      return  this.http.delete('https://formdemo-830bd-default-rtdb.firebaseio.com/products/'+id+'.json', {headers: header})
 
     }
 
     deleteAllProducts(){
-        this.http.delete('https://formdemo-830bd-default-rtdb.firebaseio.com/products.json').subscribe()
+      return  this.http.delete('https://formdemo-830bd-default-rtdb.firebaseio.com/products.json')
 
     }
 
-    updateProduct(id:string, value: Product){
-      this.http.put('https://formdemo-830bd-default-rtdb.firebaseio.com/products/'+id+'.json',value).subscribe()
+    updateProduct(id: string, value: any): Observable<any> {
+      return this.http.put(`https://formdemo-830bd-default-rtdb.firebaseio.com/products/${id}.json`, value);
     }
+  
 }
