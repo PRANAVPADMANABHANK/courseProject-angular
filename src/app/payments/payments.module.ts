@@ -15,3 +15,4 @@ import { PaymentsComponent } from './payments.component';
   ]
 })
 export class PaymentsModule { }
+    
