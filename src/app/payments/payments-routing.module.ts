@@ -9,3 +9,4 @@ const routes: Routes = [{ path: '', component: PaymentsComponent }];
   exports: [RouterModule]
 })
 export class PaymentsRoutingModule { }
+                             
