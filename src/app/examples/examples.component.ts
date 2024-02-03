@@ -12,7 +12,7 @@ export class ExamplesComponent {
     firstName : "Jane Doe",
     city: "New York",
     cityCode: "NY"
-  }
+  } 
 
 
 }
